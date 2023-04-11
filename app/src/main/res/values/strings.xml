@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SLT</string>
+    <string name="app_name">Sterlite</string>
     <string name="invalid_request">Invalid request</string>
 
     <string name="offline">No Internet Connection</string>

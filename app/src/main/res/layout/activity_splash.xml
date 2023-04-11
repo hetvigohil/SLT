@@ -31,7 +31,7 @@
                 android:textColor="@color/colorTheme"
                 android:layout_marginTop="10dp"
                 android:textSize="35dp"
-                android:textStyle="bold"/>
+                style="@style/textBold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,7 +40,8 @@
                 android:textSize="30dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                style="@style/textRegular"/>
         </LinearLayout>
 
 
@@ -61,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="Specially Designed for"
             android:textSize="18dp"
-            android:textStyle="bold"
+            style="@style/textBold"
             android:textColor="@color/colorTheme"
             android:layout_marginTop="25dp"/>
 
@@ -79,6 +80,7 @@
             android:background="@drawable/half_circle">
 
             <TextView
+                style="@style/textRegular"
                 android:id="@+id/text_engineered_by"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,7 +92,7 @@
                 android:layout_marginTop="25dp"/>
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
@@ -98,7 +100,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
                 android:layout_below="@+id/text_engineered_by"
-                android:src="@drawable/qpos_smaller"/>
+                android:src="@drawable/quarter_logo"/>
 
         </RelativeLayout>
 

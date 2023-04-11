@@ -1,5 +1,7 @@
 package com.slt.extra
 
+import com.slt.model.ScrapLocationModel
+
 object Constants {
 
     const val TYPE_BASE: Int = 0
@@ -13,4 +15,5 @@ object Constants {
     const val NOTIFY = "notify"
     const val SCRAPITEM = "scrapItem"
     const val LOCATIONID = "locationID"
+    var scrapLocationModel : ScrapLocationModel = ScrapLocationModel()
 }

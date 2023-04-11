@@ -1,9 +1,16 @@
 package com.slt.ui
 
 import android.Manifest
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import android.view.Window
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +28,8 @@ import com.slt.extensions.makeException
 import com.slt.ui.adapter.RecentCollectionAdapter
 import com.slt.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_dash_board.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
 
@@ -62,6 +71,11 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
         }
 
         ivLogout.setOnClickListener{
+
+           /* logoutDialog(this){
+
+            }*/
+
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Logout")
             builder.setMessage("ARe you sure want to logout?")
@@ -85,8 +99,17 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
                 is com.slt.base.Result.Success -> {
                     makeToast(it.message)
                     it.data.let {
-                        startActivity(Intent(this,SplashActivity::class.java))
-                        finishAffinity()
+                        GlobalScope.launch {
+                            DataManager.getInstance().getDatabase().clearAllTables()
+                        }
+                        DataManager.getInstance().getPreference().clearPreference()
+                        startActivity(
+                            Intent(
+                                applicationContext,
+                                SplashActivity::class.java
+                            ).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        )
+                        finish()
                     }
                 }
                 is com.slt.base.Result.Error -> {
@@ -108,7 +131,7 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
             hideLoading()
             when (it) {
                 is com.slt.base.Result.Success -> {
-                    makeToast(it.message)
+//                    makeToast(it.message)
                     recentCollectionAdapter.addData(it.data)
                 }
                 is com.slt.base.Result.Error -> {
@@ -125,5 +148,36 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
             }
         }
 
+    }
+
+    fun logoutDialog(
+        context: Context,
+        callBack: ((Boolean) -> Unit)
+    ) {
+        val dialog = Dialog(context)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+        dialog.setContentView(R.layout.dialog_logout)
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        val cancel = dialog.findViewById<TextView>(R.id.tvCancel)
+        val logout = dialog.findViewById<TextView>(R.id.tvLogout)
+        val tvTitle = dialog.findViewById<TextView>(R.id.tvTitle)
+
+        cancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        logout.setOnClickListener {
+            callBack.invoke(true)
+            dialog.dismiss()
+        }
+
+        dialog.setCancelable(true)
+        dialog.show()
     }
 }

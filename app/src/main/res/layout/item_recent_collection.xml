@@ -19,6 +19,7 @@
             android:layout_weight="1">
 
             <TextView
+                style="@style/textRegular"
                 android:id="@+id/tvZone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -28,6 +29,8 @@
                 android:textColor="@color/colorTheme"/>
 
             <TextView
+                style="@style/textRegular"
+                android:id="@+id/tvDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -45,6 +48,7 @@
             android:layout_weight="1">
 
             <TextView
+                style="@style/textRegular"
                 android:id="@+id/tvLocation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -54,46 +58,32 @@
                 android:textColor="@color/colorTheme"/>
 
             <TextView
+                style="@style/textRegular"
+                android:id="@+id/tvTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="*:00 AM"
+                android:text="09:00 AM"
                 android:textSize="14dp"
                 android:gravity="end"
                 android:textColor="@color/colorTheme"/>
 
         </LinearLayout>
 
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="6dp">
-
-            <TextView
+            android:layout_marginTop="6dp"
+            android:scrollbars="none">
+            <LinearLayout
+                android:id="@+id/llPanel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/recent_collection_bg"
-                android:text="Ink Bottel"
-                android:textSize="14dp"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="6dp"
-                android:backgroundTint="@color/colorBackground"
-                android:textColor="@color/colorTheme"/>
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/recent_collection_bg"
-                android:text="Garbge"
-                android:textSize="14dp"
-                android:layout_marginStart="10dp"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="6dp"
-                android:backgroundTint="@color/colorBackground"
-                android:textColor="@color/colorTheme"/>
+            </LinearLayout>
+        </HorizontalScrollView>
 
-        </LinearLayout>
 
     </LinearLayout>
 

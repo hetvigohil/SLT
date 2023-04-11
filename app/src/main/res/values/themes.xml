@@ -15,7 +15,16 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="android:navigationBarColor">@color/colorBackground</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/my_psans_font</item>
 
-        <!--        <item name="android:fontFamily">@font/my_psans_font</item>-->
     </style>
+
+    <style name="textBold">
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="textRegular">
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
 </resources>

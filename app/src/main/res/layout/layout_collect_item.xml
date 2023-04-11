@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        style="@style/textRegular"
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recent_collection_bg"
+        android:text="Ink Bottel"
+        android:textSize="14dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="6dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/colorBackground"
+        android:textColor="@color/colorTheme"/>
+
+</LinearLayout>

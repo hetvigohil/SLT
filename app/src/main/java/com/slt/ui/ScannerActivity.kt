@@ -30,10 +30,10 @@ class ScannerActivity : BaseActivity(R.layout.activity_scanner), ResultHandler {
             hideLoading()
             when (it) {
                 is com.slt.base.Result.Success -> {
-                    makeToast(it.message)
+//                    makeToast(it.message)
                     it.data.let {
+                        Constants.scrapLocationModel = it
                         val intent = Intent(this,NewScrapActivity::class.java)
-                        intent.putExtra(Constants.SCRAPITEM,it)
                         intent.putExtra(Constants.LOCATIONID,locationID)
                         startActivity(intent)
                     }

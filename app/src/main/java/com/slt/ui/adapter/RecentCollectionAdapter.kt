@@ -4,12 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.slt.R
 import com.slt.model.HistoryModel
+import kotlinx.android.synthetic.main.item_recent_collection.view.*
 
 
 class RecentCollectionAdapter : RecyclerView.Adapter<RecentCollectionAdapter.RecentCollectionViewHolder>() {
@@ -29,11 +28,26 @@ class RecentCollectionAdapter : RecyclerView.Adapter<RecentCollectionAdapter.Rec
     override fun onBindViewHolder(holder: RecentCollectionViewHolder, @SuppressLint("RecyclerView") position: Int) {
 
         val item = mData[position]
+        holder.itemView.tvZone.text = item.zone
+        holder.itemView.tvLocation.text = item.location
+        holder.itemView.tvDate.text = item.date
+        holder.itemView.tvTime.text = item.time
+
+        item.collectedItem.forEach {
+
+            val layout2: View =
+                LayoutInflater.from(holder.itemView.context).inflate(com.slt.R.layout.layout_collect_item, null, false)
+
+            val txt = layout2.findViewById<TextView>(R.id.tvTitle)
+            txt.text = it.name
+            holder.itemView.llPanel.addView(layout2)
+
+        }
 
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return mData.size
     }
 
     fun addData(mData : ArrayList<HistoryModel>){

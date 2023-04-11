@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace 'com.slt'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.slt"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -108,7 +108,7 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
 
-//    implementation 'id.zelory:compressor:2.1.0'
+    implementation 'id.zelory:compressor:2.1.0'
 
     //logging lib
     implementation 'com.jakewharton.timber:timber:5.0.1'

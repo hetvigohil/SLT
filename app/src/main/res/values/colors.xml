@@ -12,5 +12,7 @@
     <color name="colorBackground">#DDE3F7</color>
     <color name="colorGreen">#00CA6A</color>
     <color name="colorGray">#A3A3A3</color>
+    <color name="colorLightGray">#E1E1E1</color>
+    <color name="colorCancel">#E64A19</color>
     <color name="colorScrap">#F4F7FE</color>
 </resources>

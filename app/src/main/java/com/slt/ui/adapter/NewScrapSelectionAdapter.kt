@@ -1,10 +1,12 @@
 package com.slt.ui.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.slt.R
 import com.slt.model.AvailableItem
 import kotlinx.android.synthetic.main.item_scrap_collection.view.*
@@ -28,16 +30,19 @@ class NewScrapSelectionAdapter : RecyclerView.Adapter<NewScrapSelectionAdapter.N
 
         val item = mData[position]
 
-        item.imagePath?.let {
-            holder.itemView.llWithoutImage.visibility = View.GONE
+        Log.e("onBindViewHolder",""+item)
+
+        item.filePath?.let {
+            holder.itemView.llWithoutImage.visibility = View.INVISIBLE
             holder.itemView.llImageSuccessfully.visibility = View.VISIBLE
             holder.itemView.tvSelectedItemName.text = item.name
 
-            holder.itemView.image.setImageBitmap(it)
+//            holder.itemView.image.setImageBitmap(it)
+            Glide.with(holder.itemView.context).load(item.filePath).into(holder.itemView.image)
 
         }?:kotlin.run {
             holder.itemView.llWithoutImage.visibility = View.VISIBLE
-            holder.itemView.llImageSuccessfully.visibility = View.GONE
+            holder.itemView.llImageSuccessfully.visibility = View.INVISIBLE
             holder.itemView.tvItemName.text = item.name
         }
 
@@ -59,7 +64,7 @@ class NewScrapSelectionAdapter : RecyclerView.Adapter<NewScrapSelectionAdapter.N
     fun getSelected(): ArrayList<AvailableItem>{
         var mdata : ArrayList<AvailableItem> = ArrayList()
         mData?.forEach {
-            if (it.filePath != ""){
+            it.filePath?.let {file->
                 mdata.add(it)
             }
         }

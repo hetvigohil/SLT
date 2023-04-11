@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="Welcome back,"
                 android:textSize="18dp"
+                style="@style/textRegular"
                 android:textColor="@color/colorTheme"/>
 
             <TextView
@@ -35,7 +36,7 @@
                 android:text="Rahul Khanna"
                 android:textSize="24dp"
                 android:layout_below="@+id/text"
-                android:textStyle="bold"
+                style="@style/textBold"
                 android:textColor="@color/colorTheme"/>
 
             <ImageView
@@ -76,6 +77,7 @@
                     android:layout_height="wrap_content"
                     android:text="New Scrap"
                     android:textSize="28dp"
+                    style="@style/textRegular"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/white"/>
             </LinearLayout>
@@ -88,7 +90,7 @@
             android:layout_height="wrap_content"
             android:text="Recent Collection"
             android:textSize="24dp"
-            android:textStyle="bold"
+            style="@style/textBold"
             android:layout_marginTop="20dp"
             android:textColor="@color/colorTheme"/>
 

@@ -40,28 +40,29 @@
                     android:textColor="@color/colorTheme"
                     android:layout_marginTop="10dp"
                     android:textSize="25dp"
-                    android:textStyle="bold"/>
+                    style="@style/textBold"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="v1.0"
                     android:textSize="18dp"
-                    android:textStyle="bold"
+                    style="@style/textBold"
                     android:textColor="@color/black"
                     android:layout_marginTop="15dp"/>
 
                 <TextView
+                    style="@style/textBold"
                     android:id="@+id/textHint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Username"
                     android:textColor="@color/colorTheme"
-                    android:textStyle="bold"
                     android:textSize="16sp" />
 
                 <EditText
+                    style="@style/textRegular"
                     android:id="@+id/edtUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,15 +75,16 @@
                     android:hint="Enter Username"/>
 
                 <TextView
+                    style="@style/textBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Password"
                     android:textColor="@color/colorTheme"
-                    android:textStyle="bold"
                     android:textSize="16sp" />
 
                 <EditText
+                    style="@style/textRegular"
                     android:id="@+id/edtPassword"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
@@ -104,6 +106,7 @@
                     android:background="@drawable/button_login">
 
                     <TextView
+                        style="@style/textRegular"
                         android:id="@+id/tv_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -139,12 +142,12 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp">
         <TextView
+            style="@style/textBold"
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Specially Designed for"
             android:textSize="18dp"
-            android:textStyle="bold"
             android:textColor="@color/colorTheme"/>
 
         <ImageView
