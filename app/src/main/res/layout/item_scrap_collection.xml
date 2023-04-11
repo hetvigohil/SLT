@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorScrap"
+    app:cardCornerRadius="5dp"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:id="@+id/llImageSuccessfully"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_done"
+                    app:tint="@color/colorGreen" />
+
+                <TextView
+                    android:id="@+id/tvSelectedItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Garbage"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTheme"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Image capture successfully"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llWithoutImage"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvItemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Die Room"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_toLeftOf="@+id/ivArrow"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorTheme"/>
+
+            <ImageView
+                android:id="@+id/ivArrow"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_arrow"
+                android:backgroundTint="@color/colorTheme"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+        
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

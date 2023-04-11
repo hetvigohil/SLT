@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SLT</string>
+    <string name="invalid_request">Invalid request</string>
+
+    <string name="offline">No Internet Connection</string>
+    <string name="something_went_wrong">Something went wrong!</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:background="@color/colorBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/square_bg"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scrap\nCollection\nManagement"
+                android:textColor="@color/colorTheme"
+                android:layout_marginTop="10dp"
+                android:textSize="35dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="v1.0"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="15dp"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specially Designed for"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTheme"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/text"
+            android:src="@drawable/sterlite_logo"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/half_circle">
+
+            <TextView
+                android:id="@+id/text_engineered_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Engineered by"
+                android:textSize="18dp"
+                android:paddingTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorTheme"
+                android:layout_marginTop="25dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/text_engineered_by"
+                android:src="@drawable/qpos_smaller"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

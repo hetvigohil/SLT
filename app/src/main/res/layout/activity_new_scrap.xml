@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_above="@+id/rlSubmit">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow"
+                android:rotation="180"
+                android:padding="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="?selectableItemBackgroundBorderless"
+                app:tint="@color/colorTheme" />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Collecting New Scrap"
+                android:textSize="24dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/colorTheme"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textColor="@color/colorGray"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvZone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Color area"
+                android:textColor="@color/black"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                android:layout_marginTop="3dp"/>
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Die Room"
+                android:textColor="@color/black"
+                android:textSize="19dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select the scrap collection?"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSelectCollection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_scrap_collection"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="end"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_login">
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingStart="40dp"
+            android:paddingEnd="10dp"
+            android:textSize="16dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_login"
+            android:src="@drawable/ic_arrow"
+            app:tint="@color/white"
+            android:paddingEnd="40dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <include layout="@layout/lay_progress"/>
+
+</RelativeLayout>
