@@ -124,7 +124,7 @@ class NewScrapActivity : BaseActivity(R.layout.activity_new_scrap) {
                     val f: File = File(it.filePath.toString())
                     val json = JsonObject()
                     json.addProperty(BaseViewModel.PARAM_ITEM, it.code)
-                    json.addProperty(BaseViewModel.PARAM_FILE, "file")
+                    json.addProperty(BaseViewModel.PARAM_FILE, file)
                     json.addProperty(BaseViewModel.PARAM_FILETYPE, "image")
                     json.addProperty(BaseViewModel.PARAM_FILENAME, f.name)
                     json.addProperty(BaseViewModel.PARAM_FILEFORMAT, f.extension)
