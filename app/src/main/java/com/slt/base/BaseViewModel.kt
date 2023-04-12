@@ -19,6 +19,7 @@ open class BaseViewModel : ViewModel() {
         const val PARAM_FILETYPE = "fileType"
         const val PARAM_FILENAME = "fileName"
         const val PARAM_FILEFORMAT = "fileFormat"
+        const val PARAM_ITEM = "item"
         const val PARAM_DATE = "date"
 
         /**
@@ -36,6 +37,7 @@ open class BaseViewModel : ViewModel() {
                         is Double -> addProperty(item.first, convertedValue.toDouble())
                         is Boolean -> addProperty(item.first, convertedValue.toBoolean())
                         is JsonArray -> add(item.first, item.second as JsonArray)
+                        is JsonObject -> add(item.first, item.second as JsonObject)
                         else -> addProperty(item.first, convertedValue)
                     }
                 }

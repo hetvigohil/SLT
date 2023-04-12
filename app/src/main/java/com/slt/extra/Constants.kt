@@ -1,5 +1,6 @@
 package com.slt.extra
 
+import com.slt.model.HistoryModel
 import com.slt.model.ScrapLocationModel
 
 object Constants {
@@ -16,4 +17,5 @@ object Constants {
     const val SCRAPITEM = "scrapItem"
     const val LOCATIONID = "locationID"
     var scrapLocationModel : ScrapLocationModel = ScrapLocationModel()
+    var historyMOdel : ArrayList<String> = ArrayList()
 }

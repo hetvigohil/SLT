@@ -3,7 +3,7 @@ import com.google.gson.annotations.SerializedName
 
 data class HistoryModel(
     @SerializedName("collectedItem")
-    val collectedItem: List<CollectedItem>,
+    val collectedItem: ArrayList<CollectedItem>,
     @SerializedName("date")
     val date: String,
     @SerializedName("location")
@@ -18,7 +18,7 @@ data class CollectedItem(
     @SerializedName("code")
     val code: String,
     @SerializedName("image")
-    val image: List<String>,
+    val image: ArrayList<String>,
     @SerializedName("name")
     val name: String
 )

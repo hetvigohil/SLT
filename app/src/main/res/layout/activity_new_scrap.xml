@@ -81,10 +81,11 @@
                 android:textSize="19dp"/>
 
             <TextView
+                android:id="@+id/tvQuestion"
                 style="@style/textBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select the scrap collection?"
+                tools:text="Select the scrap collection?"
                 android:textColor="@color/black"
                 android:textSize="24dp"
                 android:layout_marginTop="20dp"/>
@@ -109,7 +110,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/button_login">
+        android:background="@drawable/button_login"
+        android:backgroundTint="@color/colorGray">
 
         <TextView
             style="@style/textRegular"

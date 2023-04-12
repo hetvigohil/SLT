@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.slt.R
+import com.slt.model.CollectedItem
 import com.slt.model.HistoryModel
 import kotlinx.android.synthetic.main.item_recent_collection.view.*
 
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.item_recent_collection.view.*
 class RecentCollectionAdapter : RecyclerView.Adapter<RecentCollectionAdapter.RecentCollectionViewHolder>() {
 
     var mData : ArrayList<HistoryModel> = ArrayList()
-//    var onClick: ((categoryModel : CategoryModel,position : Int) -> Unit)? = null
+    var onClick: ((categoryModel : CollectedItem,position : Int) -> Unit)? = null
 
     class RecentCollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -32,6 +33,7 @@ class RecentCollectionAdapter : RecyclerView.Adapter<RecentCollectionAdapter.Rec
         holder.itemView.tvLocation.text = item.location
         holder.itemView.tvDate.text = item.date
         holder.itemView.tvTime.text = item.time
+        holder.itemView.llPanel.removeAllViews()
 
         item.collectedItem.forEach {
 
@@ -42,6 +44,10 @@ class RecentCollectionAdapter : RecyclerView.Adapter<RecentCollectionAdapter.Rec
             txt.text = it.name
             holder.itemView.llPanel.addView(layout2)
 
+            txt.setOnClickListener {view ->
+                onClick?.invoke(it,position)
+            }
+
         }
 
     }
@@ -51,6 +57,7 @@ class RecentCollectionAdapter : RecyclerView.Adapter<RecentCollectionAdapter.Rec
     }
 
     fun addData(mData : ArrayList<HistoryModel>){
+        this.mData.clear()
         this.mData = mData
         notifyDataSetChanged()
     }

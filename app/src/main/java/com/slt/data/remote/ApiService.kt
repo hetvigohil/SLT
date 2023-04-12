@@ -8,6 +8,7 @@ import com.slt.model.HistoryModel
 import com.slt.model.LoginModel
 import com.slt.model.ScrapLocationModel
 import com.slt.model.UploadMediaModel
+import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header

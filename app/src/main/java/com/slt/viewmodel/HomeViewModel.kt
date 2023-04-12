@@ -9,6 +9,7 @@ import com.slt.model.HistoryModel
 import com.slt.model.ScrapLocationModel
 import com.slt.model.UploadMediaModel
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 class HomeViewModel : BaseViewModel() {
 
@@ -46,7 +47,7 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-    fun uploadMedia(base64Img:String,fileName:String,fileFormat:String) {
+    fun uploadMedia(base64Img:String,fileName:String,fileFormat:String,itemCode:String) {
         viewModelScope.launch {
             try {
                 val response = getRemote().uploadMedia(
@@ -54,7 +55,8 @@ class HomeViewModel : BaseViewModel() {
                         Pair(PARAM_FILE, base64Img),
                         Pair(PARAM_FILETYPE, "image"),
                         Pair(PARAM_FILENAME, fileName),
-                        Pair(PARAM_FILEFORMAT, fileFormat)
+                        Pair(PARAM_FILEFORMAT, fileFormat),
+                        Pair(PARAM_ITEM, itemCode)
                     )
                 )
                 mUploadMediaData.value =

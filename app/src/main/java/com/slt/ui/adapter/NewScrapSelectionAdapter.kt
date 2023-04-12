@@ -16,6 +16,7 @@ class NewScrapSelectionAdapter : RecyclerView.Adapter<NewScrapSelectionAdapter.N
 
     var mData : ArrayList<AvailableItem> = ArrayList()
     var onClick: ((categoryModel : AvailableItem,position : Int) -> Unit)? = null
+    var onDelete: ((categoryModel : AvailableItem,position : Int) -> Unit)? = null
 
     class NewScrapViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -33,7 +34,7 @@ class NewScrapSelectionAdapter : RecyclerView.Adapter<NewScrapSelectionAdapter.N
         Log.e("onBindViewHolder",""+item)
 
         item.filePath?.let {
-            holder.itemView.llWithoutImage.visibility = View.INVISIBLE
+            holder.itemView.llWithoutImage.visibility = View.GONE
             holder.itemView.llImageSuccessfully.visibility = View.VISIBLE
             holder.itemView.tvSelectedItemName.text = item.name
 
@@ -48,6 +49,10 @@ class NewScrapSelectionAdapter : RecyclerView.Adapter<NewScrapSelectionAdapter.N
 
         holder.itemView.setOnClickListener {
             onClick?.invoke(item,position)
+        }
+
+        holder.itemView.ivDelete.setOnClickListener {
+            onDelete?.invoke(item,position)
         }
 
     }

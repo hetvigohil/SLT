@@ -10,6 +10,8 @@ data class ScrapLocationModel(
     val location: String = "",
     @SerializedName("zone")
     val zone: String="",
+    @SerializedName("questionText")
+    val questionText: String="",
     @SerializedName("availableItem")
     val availableItem: ArrayList<AvailableItem> ?= null,
 
@@ -22,8 +24,6 @@ data class AvailableItem(
     val name: String,
     @SerializedName("mediaId")
     var mediaId : String ?= "",
-    @SerializedName("imagePath")
-    var imagePath : Bitmap ?=null,
     @SerializedName("filePath")
     var filePath : String ?= ""
 ): Parcelable

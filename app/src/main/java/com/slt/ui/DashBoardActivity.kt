@@ -6,12 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +23,7 @@ import com.slt.base.BaseActivity
 import com.slt.data.datamanager.DataManager
 import com.slt.data.preferences.PreferenceManager
 import com.slt.extensions.makeException
+import com.slt.extra.Constants
 import com.slt.ui.adapter.RecentCollectionAdapter
 import com.slt.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_dash_board.*
@@ -33,8 +32,8 @@ import kotlinx.coroutines.launch
 
 class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
 
-    lateinit var recentCollectionAdapter : RecentCollectionAdapter
-    lateinit var homeViewModel : HomeViewModel
+    lateinit var recentCollectionAdapter: RecentCollectionAdapter
+    lateinit var homeViewModel: HomeViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +41,8 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        tvUserName.text = DataManager.getInstance().getPreference().getString(PreferenceManager.USER_NAME, "")
+        tvUserName.text =
+            DataManager.getInstance().getPreference().getString(PreferenceManager.USER_NAME, "")
 
         rvRecentCollection.layoutManager = LinearLayoutManager(this)
         recentCollectionAdapter = RecentCollectionAdapter()
@@ -55,7 +55,12 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
                 ).withListener(object : MultiplePermissionsListener {
                     override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                         if (report.areAllPermissionsGranted()) {
-                            startActivity(Intent(this@DashBoardActivity,ScannerActivity::class.java))
+                            startActivity(
+                                Intent(
+                                    this@DashBoardActivity,
+                                    ScannerActivity::class.java
+                                )
+                            )
                         }
                     }
 
@@ -66,15 +71,16 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
                     }
                 }).onSameThread().check()
         }
+
         homeViewModel.historyData().apply {
             showLoading()
         }
 
-        ivLogout.setOnClickListener{
+        ivLogout.setOnClickListener {
 
-           /* logoutDialog(this){
+            /* logoutDialog(this){
 
-            }*/
+             }*/
 
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Logout")
@@ -126,9 +132,9 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
             }
         }
 
-
         homeViewModel.mHistoryData.observe(this) {
             hideLoading()
+            swipeRefresh.isRefreshing = false
             when (it) {
                 is com.slt.base.Result.Success -> {
 //                    makeToast(it.message)
@@ -146,6 +152,18 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
                 }
                 else -> {}
             }
+        }
+
+        swipeRefresh.setOnRefreshListener {
+            homeViewModel.historyData().apply {
+                showLoading()
+            }
+        }
+
+        recentCollectionAdapter.onClick = { item, pos ->
+            Constants.historyMOdel = item.image
+            val intent = Intent(this,ImageViewerActivity::class.java)
+            startActivity(intent)
         }
 
     }

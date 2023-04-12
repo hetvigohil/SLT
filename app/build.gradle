@@ -112,4 +112,7 @@ dependencies {
 
     //logging lib
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
 }
