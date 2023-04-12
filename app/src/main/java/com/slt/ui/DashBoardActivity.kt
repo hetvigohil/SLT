@@ -84,7 +84,7 @@ class DashBoardActivity : BaseActivity(R.layout.activity_dash_board) {
 
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Logout")
-            builder.setMessage("ARe you sure want to logout?")
+            builder.setMessage("Are you sure want to logout?")
 
             builder.setPositiveButton("Yes") { dialog, which ->
                 homeViewModel.logout().apply {
