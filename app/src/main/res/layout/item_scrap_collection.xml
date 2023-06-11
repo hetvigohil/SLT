@@ -16,17 +16,32 @@
             android:id="@+id/llImageSuccessfully"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible">
+            android:visibility="visible">
             <LinearLayout
-                android:layout_toLeftOf="@+id/ivDelete"
+                android:layout_toLeftOf="@+id/rlRight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/image"
+
+                <FrameLayout
                     android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_height="60dp">
+                    <ImageView
+                        android:id="@+id/ivDefault"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/edittext_bg"
+                        android:backgroundTint="@color/colorBackground"
+                        android:layout_gravity="center_vertical" />
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:visibility="gone"
+                       android:layout_gravity="center_vertical" />
+                </FrameLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,10 +51,12 @@
                     android:layout_gravity="center_vertical">
 
                     <ImageView
+                        android:id="@+id/ivDone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_done"
-                        app:tint="@color/colorGreen" />
+                        app:tint="@color/colorGreen"
+                        android:visibility="gone"/>
 
                     <TextView
                         style="@style/textBold"
@@ -51,27 +68,44 @@
                         android:textColor="@color/colorTheme"/>
 
                     <TextView
+                        android:id="@+id/ivSuccessfully"
                         style="@style/textRegular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Image capture successfully"
                         android:textSize="12dp"
+                        android:visibility="gone"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/ivDelete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:padding="5dp"
+            <RelativeLayout
+                android:id="@+id/rlRight"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_close_line"
-                android:backgroundTint="@color/colorTheme"
-                android:layout_centerVertical="true"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+                <ImageView
+                    android:id="@+id/ivDelete"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    android:background="@drawable/ic_close_line"
+                    android:backgroundTint="@color/colorTheme" />
+
+                <ImageView
+                    android:id="@+id/ivArrow"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_arrow"
+                    android:backgroundTint="@color/colorTheme"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
 
         </RelativeLayout>
 
@@ -81,7 +115,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/llWithoutImage"
             android:orientation="horizontal"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_centerVertical="true">
 
             <TextView
@@ -92,13 +126,11 @@
                 android:text="Die Room"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:layout_toLeftOf="@+id/ivArrow"
                 android:textSize="18dp"
                 android:layout_centerVertical="true"
                 android:textColor="@color/colorTheme"/>
 
             <ImageView
-                android:id="@+id/ivArrow"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"

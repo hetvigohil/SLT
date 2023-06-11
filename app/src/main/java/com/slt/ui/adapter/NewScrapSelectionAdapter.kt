@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.slt.R
 import com.slt.model.AvailableItem
 import kotlinx.android.synthetic.main.item_scrap_collection.view.*
@@ -33,20 +34,41 @@ class NewScrapSelectionAdapter : RecyclerView.Adapter<NewScrapSelectionAdapter.N
 
         Log.e("onBindViewHolder",""+item)
 
+        val options = RequestOptions()
+        options.centerCrop()
+
+
         item.filePath?.let {
-            holder.itemView.llWithoutImage.visibility = View.GONE
-            holder.itemView.llImageSuccessfully.visibility = View.VISIBLE
-            holder.itemView.tvSelectedItemName.text = item.name
+
+            holder.itemView.ivDelete.visibility = View.VISIBLE
+            holder.itemView.ivDone.visibility = View.VISIBLE
+            holder.itemView.ivSuccessfully.visibility = View.VISIBLE
+            holder.itemView.ivDefault.visibility = View.GONE
+            holder.itemView.image.visibility = View.VISIBLE
+            holder.itemView.ivArrow.visibility = View.GONE
+
+//            holder.itemView.llWithoutImage.visibility = View.GONE
+//            holder.itemView.llImageSuccessfully.visibility = View.VISIBLE
+//            holder.itemView.tvSelectedItemName.text = item.name
 
 //            holder.itemView.image.setImageBitmap(it)
-            Glide.with(holder.itemView.context).load(item.filePath).into(holder.itemView.image)
+            Glide.with(holder.itemView.context).load(item.filePath).apply(options).into(holder.itemView.image)
 
         }?:kotlin.run {
-            holder.itemView.llWithoutImage.visibility = View.VISIBLE
+           /* holder.itemView.llWithoutImage.visibility = View.VISIBLE
             holder.itemView.llImageSuccessfully.visibility = View.INVISIBLE
             holder.itemView.tvItemName.text = item.name
-        }
+*/
+            holder.itemView.ivDelete.visibility = View.GONE
+            holder.itemView.ivDone.visibility = View.GONE
+            holder.itemView.ivSuccessfully.visibility = View.GONE
+            holder.itemView.ivDefault.visibility = View.VISIBLE
+            holder.itemView.image.visibility = View.GONE
+            holder.itemView.ivArrow.visibility = View.VISIBLE
+            Glide.with(holder.itemView.context).load(item.itemImage).apply(options).into(holder.itemView.image)
 
+        }
+        holder.itemView.tvSelectedItemName.text = item.name
         holder.itemView.setOnClickListener {
             onClick?.invoke(item,position)
         }

@@ -12,6 +12,7 @@ object Constants {
     const val INVALID_REQUEST: Int = 422
     const val NOT_FOUND: Int = 404
     const val TRY_AGAIN: Int = 400
+    const val IMAGE_PATH: String = "image_path"
 
     const val NOTIFY = "notify"
     const val SCRAPITEM = "scrapItem"

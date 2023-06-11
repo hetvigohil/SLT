@@ -1,6 +1,7 @@
 package com.slt.ui
 
 import android.Manifest
+import android.R.attr
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
@@ -10,7 +11,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Base64
-import android.util.Log
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +38,6 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class NewScrapActivity : BaseActivity(R.layout.activity_new_scrap) {
@@ -93,7 +92,8 @@ class NewScrapActivity : BaseActivity(R.layout.activity_new_scrap) {
                 ).withListener(object : MultiplePermissionsListener {
                     override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                         if (report.areAllPermissionsGranted()) {
-                            dispatchTakePictureIntent()
+                            startActivityForResult(Intent(this@NewScrapActivity,CameraActivity::class.java),REQUEST_TAKE_PHOTO)
+//                            dispatchTakePictureIntent()
                         }
                     }
 
@@ -229,12 +229,17 @@ class NewScrapActivity : BaseActivity(R.layout.activity_new_scrap) {
         if (requestCode == REQUEST_TAKE_PHOTO) {
             try {
                 val newimage_path = CompressFILE(mCurrentPhotoPath)
+                if (resultCode === RESULT_OK) {
+                    val result: String = data?.getStringExtra(Constants.IMAGE_PATH).toString()
+                    newScrapSelectionAdapter.mData[pos].filePath = result
+                    newScrapSelectionAdapter.notifyDataSetChanged()
+                    buttonEnableDisable()
+
+                }
 //            val newimage_path = data?.data.toString()
 //            val bitmap : Bitmap = data?.extras?.get("data") as Bitmap
 //            newScrapSelectionAdapter.mData[pos].imagePath = bitmap
-                newScrapSelectionAdapter.mData[pos].filePath = newimage_path
-                newScrapSelectionAdapter.notifyDataSetChanged()
-                buttonEnableDisable()
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }

@@ -25,5 +25,7 @@ data class AvailableItem(
     @SerializedName("mediaId")
     var mediaId : String ?= "",
     @SerializedName("filePath")
-    var filePath : String ?= ""
+    var filePath : String ?= "",
+    @SerializedName("itemImage")
+    var itemImage : String ?= ""
 ): Parcelable
